@@ -18,13 +18,13 @@ from torch.utils.data import Dataset, DataLoader, random_split
 
 from einops import rearrange
 
-from audiolm_pytorch.optimizer import get_optimizer
+from audiolm.optimizer import get_optimizer
 
 from ema_pytorch import EMA
 
-from audiolm_pytorch.soundstream import SoundStream
+from audiolm.soundstream import SoundStream
 
-from audiolm_pytorch.audiolm_pytorch import (
+from audiolm.audiolm import (
     SemanticTransformer,
     SemanticTransformerWrapper,
     CoarseTransformer,
@@ -35,10 +35,10 @@ from audiolm_pytorch.audiolm_pytorch import (
     HubertWithKmeans
 )
 
-from audiolm_pytorch.data import SoundDataset, get_dataloader
-from audiolm_pytorch.utils import AudioConditionerBase
+from audiolm.data import SoundDataset, get_dataloader
+from audiolm.utils import AudioConditionerBase
 
-from audiolm_pytorch.version import __version__
+from audiolm.version import __version__
 from packaging import version
 
 from accelerate import Accelerator

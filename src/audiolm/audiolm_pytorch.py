@@ -13,15 +13,15 @@ from torch.nn.utils.rnn import pad_sequence
 from einops import rearrange, repeat, reduce
 from einops.layers.torch import Rearrange
 
-from audiolm_pytorch.vq_wav2vec import FairseqVQWav2Vec
-from audiolm_pytorch.hubert_kmeans import HubertWithKmeans
+from audiolm.vq_wav2vec import FairseqVQWav2Vec
+from audiolm.hubert_kmeans import HubertWithKmeans
 
-from audiolm_pytorch.t5 import t5_encode_text, get_encoded_dim, DEFAULT_T5_NAME
+from audiolm.t5 import t5_encode_text, get_encoded_dim, DEFAULT_T5_NAME
 
 from torchaudio.functional import resample
 
-from audiolm_pytorch.soundstream import SoundStream
-from audiolm_pytorch.utils import AudioConditionerBase
+from audiolm.soundstream import SoundStream
+from audiolm.utils import AudioConditionerBase
 
 from tqdm import tqdm
 

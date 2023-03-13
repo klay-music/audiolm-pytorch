@@ -21,9 +21,9 @@ from vector_quantize_pytorch import ResidualVQ
 from local_attention import LocalMHA
 from local_attention.transformer import FeedForward, DynamicPositionBias
 
-from audiolm_pytorch.utils import curtail_to_multiple
+from audiolm.utils import curtail_to_multiple
 
-from audiolm_pytorch.version import __version__
+from audiolm.version import __version__
 from packaging import version
 parsed_version = version.parse(__version__)
 
