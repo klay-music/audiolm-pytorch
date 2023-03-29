@@ -18,6 +18,9 @@ logging.root.setLevel(logging.ERROR)
 def exists(val):
     return val is not None
 
+def default(val, d):
+    return val if exists(val) else d
+
 class HubertWithKmeans(nn.Module):
     """
     checkpoint and kmeans can be downloaded at https://github.com/facebookresearch/fairseq/tree/main/examples/hubert
@@ -29,11 +32,13 @@ class HubertWithKmeans(nn.Module):
         checkpoint_path,
         kmeans_path,
         target_sample_hz = 16000,
-        seq_len_multiple_of = None
+        seq_len_multiple_of = None,
+        output_layer = 9
     ):
         super().__init__()
         self.target_sample_hz = target_sample_hz
         self.seq_len_multiple_of = seq_len_multiple_of
+        self.output_layer = output_layer
 
         model_path = Path(checkpoint_path)
         kmeans_path = Path(kmeans_path)
@@ -74,7 +79,7 @@ class HubertWithKmeans(nn.Module):
         if exists(self.seq_len_multiple_of):
             wav_input = curtail_to_multiple(wav_input, self.seq_len_multiple_of)
 
-        embed = self.model(wav_input, features_only = True)
+        embed = self.model(wav_input, features_only = True, output_layer = self.output_layer)
         embed, packed_shape = pack([embed['x']], '* d')
 
         codebook_indices = self.kmeans.predict(embed.cpu().detach().numpy())
