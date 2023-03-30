@@ -24,7 +24,7 @@ setup(
     'einops>=0.6',
     'ema-pytorch>=0.2.2',
     'encodec',
-    'fairseq',
+    'fairseq>=12.2',
     'joblib',
     'lion-pytorch',
     'local-attention>=1.8.4',
